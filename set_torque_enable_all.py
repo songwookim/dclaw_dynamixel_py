@@ -97,7 +97,7 @@ elif MY_DXL == 'XL320':
 PROTOCOL_VERSION            = 2.0
 
 # Factory default ID of all DYNAMIXEL is 1
-DXL_ID                      = 31
+DXL_ID                      = 21
 DXL_IDs                      = [10,11,12,20,21,22,30,31,32]
 
 # Use the actual port assigned to the U2D2.
@@ -148,7 +148,7 @@ for id in DXL_IDs:
     # dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, DXL_ID, ADDR_TORQUE_ENABLE, TORQUE_DISABLE)
     if dxl_comm_result != COMM_SUCCESS:
         print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
+    elif dxl_error != 0: 
         print("%s" % packetHandler.getRxPacketError(dxl_error))
     else:
         print("Dynamixel has been successfully connected")

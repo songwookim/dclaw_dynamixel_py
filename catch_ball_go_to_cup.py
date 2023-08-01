@@ -83,12 +83,13 @@ TORQUE_ENABLE               = 1     # Value for enabling the torque
 TORQUE_DISABLE              = 0     # Value for disabling the torque
 DXL_MOVING_STATUS_THRESHOLD = 20    # Dynamixel moving status threshold
 
-a = 25
-b = 75
 index = 0
 dxl_goal_position = [DXL_MINIMUM_POSITION_VALUE, DXL_MAXIMUM_POSITION_VALUE]         # Goal position
 
-dxl_goal_positions = [
+a = 25
+b = 75
+
+dxl_goal_positions1 = [
 1015,
 2122,
 2176,
@@ -99,7 +100,7 @@ dxl_goal_positions = [
 2249,
 2101,]
 
-dxl_goal_positions = [
+dxl_goal_positions2 = [
 1015,
 2122-a,
 2176+b,
@@ -110,7 +111,7 @@ dxl_goal_positions = [
 2249,
 2101-b,]
 
-dxl_goal_positions = [
+dxl_goal_positions3 = [
 1015,
 2122-a-a-a,
 2176+b+b+b,
@@ -121,7 +122,7 @@ dxl_goal_positions = [
 2249,
 2101-b,]
 
-dxl_goal_positions = [
+dxl_goal_positions4 = [
 1015,
 2122-a-a-a-a-a-a-a,
 2176+b+b+b+b+b+b,
@@ -132,7 +133,7 @@ dxl_goal_positions = [
 2249,
 2101-b,]
 
-dxl_goal_positions = [
+dxl_goal_positions5 = [
 1015-a,
 2122-a-a-a-a-a-a-a+b,
 2176+b+b+b+b+b+b-b,
@@ -143,7 +144,7 @@ dxl_goal_positions = [
 2249-b,
 2101-b,]
 
-dxl_goal_positions = [
+dxl_goal_positions6 = [
 1015-b,
 2122-a-a-a-a-a-a-a+b+b,
 2176+b+b+b+b+b+b-b-b,
@@ -154,7 +155,7 @@ dxl_goal_positions = [
 2249-b-b,
 2101-b,]
 
-dxl_goal_positions = [
+dxl_goal_positions7 = [
 1015-b-a,
 2122-a-a-a-a-a-a-a+b+b+b,
 2176+b+b+b+b+b+b-b-b-b,
@@ -165,7 +166,7 @@ dxl_goal_positions = [
 2249-b-b-b,
 2101-b,]
 
-dxl_goal_positions = [
+dxl_goal_positions8 = [
 1015-b-b,
 2122-a-a-a-a-a-a-a+b+b+b+b,
 2176+b+b+b+b+b+b-b-b-b-b,
@@ -176,7 +177,7 @@ dxl_goal_positions = [
 2249-b-b-b-b,
 2101-b-a,]
 
-dxl_goal_positions = [
+dxl_goal_positions9 = [
 1015-b-b-a,
 2122-a-a-a-a-a-a-a+b+b+b+b+b,
 2176+b+b+b+b+b+b-b-b-b-b-b,
@@ -187,7 +188,7 @@ dxl_goal_positions = [
 2249-b-b-b-b-a-a-a,
 2101-b-a-a,]
 
-dxl_goal_positions = [
+dxl_goal_positions10 = [
 1015-b-b-b,
 2122-a-a-a-a-a-a-a+b+b+b+b+b+b,
 2176+b+b+b+b+b+b-b-b-b-b-b-b,
@@ -198,7 +199,7 @@ dxl_goal_positions = [
 2249-b-b-b-b-a-a-a-b,
 2101-b-a-a]
 
-dxl_goal_positions = [
+dxl_goal_positions11 = [
 1015-b-b-b,
 2122-a-a-a-a-a-a-a+b+b+b+b+b+b,
 2176+b+b+b+b+b+b-b-b-b-b-b-b-b-b,
@@ -208,6 +209,9 @@ dxl_goal_positions = [
 1029,
 2249-b-b-b-b-a-a-a-b,
 2101-b-a-a]
+
+
+goals = [dxl_goal_positions1, dxl_goal_positions2, dxl_goal_positions3, dxl_goal_positions4, dxl_goal_positions5, dxl_goal_positions6, dxl_goal_positions7,dxl_goal_positions8, dxl_goal_positions9, dxl_goal_positions10, dxl_goal_positions11]
 
 # Initialize PortHandler instance
 # Set the port path
@@ -243,45 +247,25 @@ for id in DXL_IDs:
     dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE, TORQUE_ENABLE)    
     if dxl_comm_result != COMM_SUCCESS:
         print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
         print("%s" % packetHandler.getRxPacketError(dxl_error))
     else:
         print("Dynamixel has been successfully connected")
 
 
+flag = 0
+for goal in goals :
+    for idx, position in enumerate(goal):
+        dxl_id = DXL_IDs[idx]
+        dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, dxl_id, ADDR_GOAL_POSITION, position)
 
-for idx, dxl_id in enumerate(DXL_IDs):
-    #print("Press any key to continue! (or press ESC to quit!)")
+    time.sleep(0.5)
 
-    # Write goal position
-    if (MY_DXL == 'XL320'): # XL320 uses 2 byte Position Data, Check the size of data in your DYNAMIXEL's control table
-        #dxl_comm_result, dxl_error = packetHandler.write2ByteTxRx(portHandler, DXL_ID, ADDR_GOAL_POSITION, dxl_goal_position[index])
-        pass
-    else:
-        #dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, DXL_ID, ADDR_GOAL_POSITION, dxl_goal_position[index])
-        dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, dxl_id, ADDR_GOAL_POSITION, dxl_goal_positions[idx])
-    
-        
-    if dxl_comm_result != COMM_SUCCESS:
-        print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
-        print("%s" % packetHandler.getRxPacketError(dxl_error))
-
-            
-
-    # Change goal position
-    if index == 0:
-        index = 1
-    else:
-        index = 0
-
-
-# Disable Dynamixel Torque
-dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, DXL_ID, ADDR_TORQUE_ENABLE, TORQUE_ENABLE)
-if dxl_comm_result != COMM_SUCCESS:
-    print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-elif dxl_error != 0:
-    print("%s" % packetHandler.getRxPacketError(dxl_error))
+# # Disable Dynamixel Torque
+# dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, DXL_ID, ADDR_TORQUE_ENABLE, TORQUE_DISABLE)
+# if dxl_comm_result != COMM_SUCCESS:
+#     print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
+# elif dxl_error != 0:
+#     print("%s" % packetHandler.getRxPacketError(dxl_error))
 
 # Close port
 portHandler.closePort()

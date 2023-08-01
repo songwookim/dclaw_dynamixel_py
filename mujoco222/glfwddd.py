@@ -3,8 +3,7 @@ import glfw
 import os
  
  
- 
- 
+
 def main():
  
 

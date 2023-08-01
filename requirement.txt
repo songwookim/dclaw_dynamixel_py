@@ -1,0 +1,5 @@
+python 3.8
+pip install Cython
+pip install gym==0.24.1
+pip install mujoco==2.2.0
+

@@ -83,131 +83,192 @@ TORQUE_ENABLE               = 1     # Value for enabling the torque
 TORQUE_DISABLE              = 0     # Value for disabling the torque
 DXL_MOVING_STATUS_THRESHOLD = 20    # Dynamixel moving status threshold
 
-a = 25
-b = 75
 index = 0
 dxl_goal_position = [DXL_MINIMUM_POSITION_VALUE, DXL_MAXIMUM_POSITION_VALUE]         # Goal position
 
-dxl_goal_positions = [
-1015,
-2122,
-2176,
-1015,
-2120,
-2265,
-1029,
-2249,
-2101,]
+a = 25
+b = 75
 
-dxl_goal_positions = [
-1015,
-2122-a,
-2176+b,
-1015,
-2120-a,
-2265+b,
-1029,
-2249,
-2101-b,]
+dxl_goal_positions1 = [
+1018,
+2059,
+2370,
+1008,
+1902,
+2546,
+1007,
+2031,
+2332,]
 
-dxl_goal_positions = [
-1015,
-2122-a-a-a,
-2176+b+b+b,
-1015,
-2120-a-a-a,
-2265+b+b+b,
-1029,
-2249,
-2101-b,]
+dxl_goal_positions2 = [
+1018,
+2059+a,
+2370+b,
+1008,
+1902+a,
+2546+b,
+1007,
+2031+a,
+2332+b,]
 
-dxl_goal_positions = [
-1015,
-2122-a-a-a-a-a-a-a,
-2176+b+b+b+b+b+b,
-1015,
-2120-a-a-a-a-a-a-a,
-2265+b+b+b+b+b+b,
-1029,
-2249,
-2101-b,]
 
-dxl_goal_positions = [
-1015-a,
-2122-a-a-a-a-a-a-a+b,
-2176+b+b+b+b+b+b-b,
-1015+b,
-2120-a-a-a-a-a-a-a+b,
-2265+b+b+b+b+b+b-b,
-1029,
-2249-b,
-2101-b,]
+dxl_goal_positions3 = [
+1018,
+2059,
+2370+b+b,
+1008,
+1902,
+2546+b+b,
+1007,
+2031,
+2332+b+b,]
 
-dxl_goal_positions = [
-1015-b,
-2122-a-a-a-a-a-a-a+b+b,
-2176+b+b+b+b+b+b-b-b,
-1015+b+a,
-2120-a-a-a-a-a-a-a+b+b,
-2265+b+b+b+b+b+b-b-b,
-1029,
-2249-b-b,
-2101-b,]
+dxl_goal_positions4 = [
+1058,
+2059-25,
+2370+b+b,
+1008,
+1902-25,
+2546+b+b,
+1007,
+2031-25,
+2332+b+b,]
 
-dxl_goal_positions = [
-1015-b-a,
-2122-a-a-a-a-a-a-a+b+b+b,
-2176+b+b+b+b+b+b-b-b-b,
-1015+b+b,
-2120-a-a-a-a-a-a-a+b+b+b,
-2265+b+b+b+b+b+b-b-b-b,
-1029,
-2249-b-b-b,
-2101-b,]
+dxl_goal_positions5 = [
+1058,
+2059-50,
+2370+b+b+b,
+1008,
+1902-50,
+2546+b+b+b,
+1007,
+2031-50,
+2332+b+b+b,]
 
-dxl_goal_positions = [
-1015-b-b,
-2122-a-a-a-a-a-a-a+b+b+b+b,
-2176+b+b+b+b+b+b-b-b-b-b,
-1015+b+b+a,
-2120-a-a-a-a-a-a-a+b+b+b+b,
-2265+b+b+b+b+b+b-b-b-b-b,
-1029,
-2249-b-b-b-b,
-2101-b-a,]
+dxl_goal_positions6 = [
+1058,
+2059-50-a-a,
+2370+b+b+b+b,
+1008,
+1902-50-a-a,
+2546+b+b+b+b,
+1007,
+2031-50-a-a,
+2332+b+b+b+b,]
 
-dxl_goal_positions = [
-1015-b-b-a,
-2122-a-a-a-a-a-a-a+b+b+b+b+b,
-2176+b+b+b+b+b+b-b-b-b-b-b,
-1015+b+b+b,
-2120-a-a-a-a-a-a-a+b+b+b+b+b,
-2265+b+b+b+b+b+b-b-b-b-b-b,
-1029,
-2249-b-b-b-b-a-a-a,
-2101-b-a-a,]
+dxl_goal_positions7 = [
+1058,
+2059-50-a-a-a,
+2370+b+b+b+b+b,
+1008,
+1902-50-a-a-a,
+2546+b+b+b+b+b,
+1007,
+2031-50-a-a-a,
+2332+b+b+b+b+b,]
 
-dxl_goal_positions = [
-1015-b-b-b,
-2122-a-a-a-a-a-a-a+b+b+b+b+b+b,
-2176+b+b+b+b+b+b-b-b-b-b-b-b,
-1015+b+b+b+a,
-2120-a-a-a-a-a-a-a+b+b+b+b+b+b,
-2265+b+b+b+b+b+b-b-b-b-b-b-b,
-1029,
-2249-b-b-b-b-a-a-a-b,
-2101-b-a-a]
+dxl_goal_positions8 = [
+1058,
+2059-50-a-a-a-a,
+2370+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a,
+2546+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a,
+2332+b+b+b+b+b+b,]
 
-dxl_goal_positions = [
-1015-b-b-b,
-2122-a-a-a-a-a-a-a+b+b+b+b+b+b,
-2176+b+b+b+b+b+b-b-b-b-b-b-b-b-b,
-1015+b+b+b+a,
-2120-a-a-a-a-a-a-a+b+b+b+b+b+b,
-2265+b+b+b+b+b+b-b-b-b-b-b-b-b-b,
-1029,
-2249-b-b-b-b-a-a-a-b,
-2101-b-a-a]
+dxl_goal_positions9 = [
+1058,
+2059-50-a-a-a-a-a,
+2370+b+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a-a,
+2546+b+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a,
+2332+b+b+b+b+b+b+b,]
+
+dxl_goal_positions10 = [
+1058,
+2059-50-a-a-a-a-a-a-a,
+2370+b+b+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a-a-a-a,
+2546+b+b+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a-a-a,
+2332+b+b+b+b+b+b+b+b,]
+
+
+dxl_goal_positions11 = [
+1058,
+2059-50-a-a-a-a-a-a-a-a,
+2370+b+b+b+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a-a-a-a-a,
+2546+b+b+b+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a-a-a-a,
+2332+b+b+b+b+b+b+b+b+b,]
+
+dxl_goal_positions12 = [
+1058,
+2059-50-a-a-a-a-a-a-a-a-a,
+2370+b+b+b+b+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a-a-a-a-a-a,
+2546+b+b+b+b+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a-a-a-a-a,
+2332+b+b+b+b+b+b+b+b+b+b,]
+
+dxl_goal_positions13 = [
+1058,
+2059-50-a-a-a-a-a-a-a-a-a-a,
+2370+b+b+b+b+b+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a-a-a-a-a-a-a,
+2546+b+b+b+b+b+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a-a-a-a-a-a,
+2332+b+b+b+b+b+b+b+b+b+b+b,]
+
+dxl_goal_positions13 = [
+1058,
+2059-50-a-a-a-a-a-a-a-a-a-a,
+2370+b+b+b+b+b+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a-a-a-a-a-a-a,
+2546+b+b+b+b+b+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a-a-a-a-a-a,
+2332+b+b+b+b+b+b+b+b+b+b+b+b,]
+
+dxl_goal_positions14 = [
+1058,
+2059-50-a-a-a-a-a-a-a-a-a-a,
+2370+b+b+b+b+b+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a-a-a-a-a-a-a,
+2546+b+b+b+b+b+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a-a-a-a-a-a,
+2332+b+b+b+b+b+b+b+b+b+b+b+b,]
+
+dxl_goal_positions15 = [
+1058,
+2059-50-a-a-a-a-a-a-a-a-a-a-a,
+2370+b+b+b+b+b+b+b+b+b+b+b+b,
+1008,
+1902-50-a-a-a-a-a-a-a-a-a-a-a,
+2546+b+b+b+b+b+b+b+b+b+b+b+b,
+1007,
+2031-50-a-a-a-a-a-a-a-a-a-a-a,
+2332+b+b+b+b+b+b+b+b+b+b+b+b+b,]
+
+
+goals = [dxl_goal_positions1, dxl_goal_positions2, dxl_goal_positions3, dxl_goal_positions4, dxl_goal_positions5, dxl_goal_positions6, dxl_goal_positions7,dxl_goal_positions8, dxl_goal_positions9, dxl_goal_positions10, dxl_goal_positions11, dxl_goal_positions12, dxl_goal_positions13, dxl_goal_positions14, dxl_goal_positions15]
 
 # Initialize PortHandler instance
 # Set the port path
@@ -243,45 +304,25 @@ for id in DXL_IDs:
     dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE, TORQUE_ENABLE)    
     if dxl_comm_result != COMM_SUCCESS:
         print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
         print("%s" % packetHandler.getRxPacketError(dxl_error))
     else:
         print("Dynamixel has been successfully connected")
 
 
+flag = 0
+for goal in goals :
+    for idx, position in enumerate(goal):
+        dxl_id = DXL_IDs[idx]
+        dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, dxl_id, ADDR_GOAL_POSITION, position)
 
-for idx, dxl_id in enumerate(DXL_IDs):
-    #print("Press any key to continue! (or press ESC to quit!)")
+    time.sleep(1)
 
-    # Write goal position
-    if (MY_DXL == 'XL320'): # XL320 uses 2 byte Position Data, Check the size of data in your DYNAMIXEL's control table
-        #dxl_comm_result, dxl_error = packetHandler.write2ByteTxRx(portHandler, DXL_ID, ADDR_GOAL_POSITION, dxl_goal_position[index])
-        pass
-    else:
-        #dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, DXL_ID, ADDR_GOAL_POSITION, dxl_goal_position[index])
-        dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, dxl_id, ADDR_GOAL_POSITION, dxl_goal_positions[idx])
-    
-        
-    if dxl_comm_result != COMM_SUCCESS:
-        print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
-        print("%s" % packetHandler.getRxPacketError(dxl_error))
-
-            
-
-    # Change goal position
-    if index == 0:
-        index = 1
-    else:
-        index = 0
-
-
-# Disable Dynamixel Torque
-dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, DXL_ID, ADDR_TORQUE_ENABLE, TORQUE_ENABLE)
-if dxl_comm_result != COMM_SUCCESS:
-    print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-elif dxl_error != 0:
-    print("%s" % packetHandler.getRxPacketError(dxl_error))
+# # Disable Dynamixel Torque
+# dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, DXL_ID, ADDR_TORQUE_ENABLE, TORQUE_DISABLE)
+# if dxl_comm_result != COMM_SUCCESS:
+#     print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
+# elif dxl_error != 0:
+#     print("%s" % packetHandler.getRxPacketError(dxl_error))
 
 # Close port
 portHandler.closePort()

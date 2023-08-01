@@ -4,15 +4,13 @@
 # pip freeze | xargs pip uninstall -y
 # >> https://talkingaboutme.tistory.com/entry/RL-mujocopy-ERROR-GLEW-initalization-error-Missing-GL-version
 
-import mujoco_py
 
+import mujoco_py
 import os
 
-from mujoco_py.generated import const
-from mujoco_py.utils import rec_copy, rec_assign
-from multiprocessing import Process, Queue
-from threading import Lock
 
+from threading import Lock
+# reload_package(mujoco_py)
 mj_path = mujoco_py.utils.discover_mujoco() # ./bin/simulate ./model/humanoid.xml
 mj_path = mj_path+'/model/humanoid.xml'
 xml_path = os.path.join(mj_path)
@@ -24,6 +22,4 @@ t= 0
 while True :
     sim.step()
     viewer.render()
-
-
-
+viewer.close()

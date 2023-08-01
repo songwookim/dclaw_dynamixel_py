@@ -85,7 +85,53 @@ DXL_MOVING_STATUS_THRESHOLD = 20    # Dynamixel moving status threshold
 
 index = 0
 dxl_goal_position = [DXL_MINIMUM_POSITION_VALUE, DXL_MAXIMUM_POSITION_VALUE]         # Goal position
+dxl_goal_positions1 = [
+1074,
+1753,
+2841,
+1041,
+2008,
+3198,
+963,
+1446,
+3365,]
 
+
+
+
+dxl_goal_positions2 = [
+1055,
+1749,
+3190,
+1041,
+2008,
+3198,
+939,
+1670,
+2676,]
+
+dxl_goal_positions3 = [
+1070,
+1513,
+3163,
+1041,
+2008,
+3198,
+910,
+1492,
+2732,]
+
+dxl_goal_positions4 = [
+1068,
+1592,
+2864,
+1041,
+2008,
+3198,
+947,
+1442,
+3191,]
+goals = [dxl_goal_positions1, dxl_goal_positions2, dxl_goal_positions3, dxl_goal_positions4]
 
 # Initialize PortHandler instance
 # Set the port path
@@ -121,41 +167,18 @@ for id in DXL_IDs:
     dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE, TORQUE_ENABLE)    
     if dxl_comm_result != COMM_SUCCESS:
         print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
         print("%s" % packetHandler.getRxPacketError(dxl_error))
     else:
         print("Dynamixel has been successfully connected")
 
 
+flag = 0
+while 1 :
+    for dxl_goal_positions in goals :
+        for idx, dxl_id in enumerate(DXL_IDs):
+            print("Press any key to continue! (or press ESC to quit!)")
+            dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, dxl_id, ADDR_GOAL_POSITION, dxl_goal_positions[idx])
 
+        time.sleep(0.3)
 
-while 1:
-    #
-    for id in DXL_IDs:
-        # Read present position
-        if (MY_DXL == 'XL320'): # XL320 uses 2 byte Position Data, Check the size of data in your DYNAMIXEL's control table
-            dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read2ByteTxRx(portHandler, DXL_ID, ADDR_PRESENT_POSITION)
-        else:
-            dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read4ByteTxRx(portHandler, id, ADDR_PRESENT_POSITION)
-            
-        if dxl_comm_result != COMM_SUCCESS:
-            print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-        elif dxl_error != 0:
-            print("%s" % packetHandler.getRxPacketError(dxl_error))
-
-        print("[ID:%03d] GoalPos:%03d  PresPos:%03d" % (id, dxl_goal_position[index], dxl_present_position))
-        
-    time.sleep(3)
-    print("========")        
-        #if not abs(dxl_goal_position[index] - dxl_present_position) > DXL_MOVING_STATUS_THRESHOLD:
-
-for id in DXL_IDs:
-    # Disable Dynamixel Torque
-    dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE, TORQUE_DISABLE)
-    if dxl_comm_result != COMM_SUCCESS:
-        print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
-        print("%s" % packetHandler.getRxPacketError(dxl_error))
-
-# Close port
-portHandler.closePort()
+# portHandler.closePort()
